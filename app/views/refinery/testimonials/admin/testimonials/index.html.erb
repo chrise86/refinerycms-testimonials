@@ -1,7 +1,16 @@
-<section id='records'>
-  <%= render 'records' %>
-</section>
-<aside id='actions'>
+<% content_for :subnav do %>
   <%= render 'actions' %>
-</aside>
+<% end %>
+
+<% if ::Refinery::Testimonials::Admin::TestimonialsController.searchable? %>
+  <%= render '/refinery/admin/search', :url => refinery.testimonials_admin_testimonials_path %>
+<% end %>
+
+<div class="ui segments">
+  <%= render 'refinery/admin/search_header', :url => request.path %>
+
+  <section id='records'>
+    <%= render 'records' %>
+  </section>
+</div>
 <%= render '/refinery/admin/make_sortable', :tree => false if !searching? and ::Refinery::Testimonials::Admin::TestimonialsController.sortable? and ::Refinery::Testimonials::Testimonial.count > 1 %>

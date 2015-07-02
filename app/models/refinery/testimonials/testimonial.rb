@@ -13,7 +13,7 @@ module Refinery
 
        acts_as_indexed :fields => [:name, :company]
 
-      validates :name, :presence => true, :uniqueness => true
+      validates :name, :presence => true #, :uniqueness => true
       validates :quote, :presence => true
 
       def flash_name

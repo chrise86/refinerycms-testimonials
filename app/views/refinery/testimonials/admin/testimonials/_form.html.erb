@@ -1,4 +1,4 @@
-<%= form_for [refinery, :testimonials_admin, @testimonial] do |f| %>
+<%= form_for [refinery, :testimonials_admin, @testimonial], html: { class: 'ui form' } do |f| %>
   <%= render '/refinery/admin/error_messages',
               object: @testimonial,
               include_object_name: true %>
@@ -41,7 +41,8 @@
 
   <div class='field'>
     <%= f.label :received_date %>
-    <%= f.date_select :received_date, order: [:day, :month, :year], prompt: true   %>
+    <%#= f.date_select :received_date, order: [:day, :month, :year], prompt: true   %>
+    <%= f.text_field :received_date, class: 'datepicker' %>
   </div>
 
 	<div class="field">
