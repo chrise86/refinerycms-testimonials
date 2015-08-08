@@ -1,6 +1,6 @@
 <div class="item active">
   <div class="sub-actions">
-    <%= link_to t('.create_new'), refinery.new_testimonials_admin_testimonial_path,
+    <%= active_link_to t('.create_new'), refinery.new_testimonials_admin_testimonial_path,
                  :class => "item" %>
     <% if !searching? && ::Refinery::Testimonials::Admin::TestimonialsController.sortable? && ::Refinery::Testimonials::Testimonial.any? %>
       <%= link_to t('.reorder', :what => "Testimonials"),
