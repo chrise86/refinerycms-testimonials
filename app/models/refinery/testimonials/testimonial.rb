@@ -13,7 +13,7 @@ module Refinery
 
       acts_as_indexed :fields => [:name, :company]
 
-      validates :name, presence: true #, :uniqueness => true
+      validates :name, presence: true, unless: :via_letter? #, :uniqueness => true
       validates :quote, presence: true
       validates :email, presence: true, if: :via_website?
 
@@ -24,9 +24,14 @@ module Refinery
         "Quote by #{self.name}"
       end
 
-    private
+      private
+
       def via_website?
         received_channel == 'Website'
+      end
+
+      def via_letter?
+        received_channel == 'Letter'
       end
     end
   end
